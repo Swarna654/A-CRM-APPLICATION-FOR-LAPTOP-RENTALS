@@ -1,0 +1,5 @@
+trigger LaptopBooking on Laptop_Bookings__c (after insert, after update) {
+    if (trigger.isAfter && (trigger.isInsert || trigger.isUpdate)) {
+        LaptopBookingHandler.sendEmailNotification(trigger.new);
+    }
+}
